@@ -1,0 +1,30 @@
+EVENT
+	eventid
+	eventname
+	eventdesc
+	eventimage
+	eventdate
+
+EVENT_REVIEW
+	reviewid
+	fk1_eventid
+	rating
+	message
+
+STAFF
+	staffid
+	staffname
+	staffimage
+	staffabout
+	staffemail
+
+STAFF_ROLE
+	fk1_staffid
+	fk2_roleid
+
+ROLE
+	roleid
+	rolename
+	roleweight
+
+-> EVENTBRITE API IDEA

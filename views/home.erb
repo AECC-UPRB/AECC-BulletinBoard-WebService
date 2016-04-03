@@ -1,0 +1,47 @@
+<link rel="stylesheet" type="text/css" href="css/events.css">
+
+<%
+require 'mysql'
+
+begin
+	db = Mysql::new("localhost", "aecc", "password", "aeccdb")
+	q = db.query("SELECT id, name, eventdate, image FROM events")
+	numberOfRows = q.num_rows
+	%>
+	<h5>
+		There are <%=numberOfRows%> events.
+	</h5>
+	<%
+	numberOfRows.times do
+		row = q.fetch_row
+		id = row[0]
+		name = row[1]
+		date = row[2]
+		img = row[3]
+	%>
+
+	<div class="event-container">
+		<h1>
+			<%=name%>
+		</h1>
+		<h3>
+			Date: <%=date%>
+		</h3>
+		<img src=<%='"'+img+'"'%>>
+	</div>
+
+	<%end%>
+
+	<%
+	db.close
+rescue Mysql::Error => e
+	%>
+	
+	<h1>
+		Database error!
+	</h1>
+
+	<%
+	db.close if db
+end
+%>
