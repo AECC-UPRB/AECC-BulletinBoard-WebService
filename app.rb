@@ -14,7 +14,7 @@ end
 post '/newevent' do
 	@eventName = params['eventName']
 	@eventDate = params['eventDate']
-	@eventImageUrl = 'images/' + params['eventImage'][:filename]
+	@eventImageUrl = 'public/images/' + params['eventImage'][:filename]
 	@eventImageData = params['eventImage'][:tempfile]
 	File.open(@eventImageUrl, "w") do |f|
     	f.write(@eventImageData.read)
