@@ -5,7 +5,7 @@ require 'mysql'
 
 begin
 	db = Mysql::new("localhost", "aecc", "password", "aeccdb")
-	q = db.query("SELECT id, name, eventdate, image FROM events WHERE eventdate > NOW()")
+	q = db.query("SELECT id, name, eventdate, image FROM events")
 	numberOfRows = q.num_rows
 	%>
 	<h5>
@@ -38,7 +38,7 @@ rescue Mysql::Error => e
 	%>
 	
 	<h1>
-		Database error!
+		Database error: <%=e%>
 	</h1>
 
 	<%
